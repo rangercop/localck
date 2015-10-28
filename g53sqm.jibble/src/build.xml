@@ -1,3 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<target>
-</target>
+<project default="create" name="G53SQM" basedir=".">
+	<target name="clean">
+		<delete dir="classes"></delete>
+	</target>
+	<target name="create" depends="clean" >
+		<mkdir dir="classes"/>
+		<javac srcdir="C:\Users\How\git\localck\g53sqm.jibble\src\g53sqm\jibble" destdir="classes" includeantruntime="true"/>
+	</target>
+</project>
