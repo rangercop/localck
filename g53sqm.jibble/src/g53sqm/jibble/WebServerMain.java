@@ -30,14 +30,12 @@ public class WebServerMain {
         
         String rootDir = WebServerConfig.location.getCanonicalPath();
         int port = WebServerConfig.DEFAULT_PORT;
-        System.out.println("Jibble Web Server (modified by How Chun Kah for G53SQM");
-        System.out.println("Root Directory: C:/Users/How/git/localck/g53sqm.jibble/webfiles");
-        System.out.println("Port:8088");
+        
+        
         if (args.length > 0) {
         	
         	
-            rootDir = WebServerConfig.location.getCanonicalPath() +"/"+ args[0];
-            
+            rootDir = WebServerConfig.location.getCanonicalPath() +"\\"+ args[0];
         }
         
         if (args.length > 1) {
@@ -51,12 +49,14 @@ public class WebServerMain {
         
         try {
             WebServer server = new WebServer(rootDir, port);
+            System.out.println("Jibble Web Server (modified by How Chun Kah-010894 for G53SQM");
+            System.out.println("Root Directory" + rootDir);
+            System.out.println("Port" + port);
             server.activate();
         }
         catch (WebServerException e) {
             System.out.println(e.toString());
         }
     }
-  
 
 }
