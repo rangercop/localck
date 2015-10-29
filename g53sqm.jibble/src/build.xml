@@ -17,5 +17,7 @@
 			</manifest>
 				</jar>
 		</target>
-								
+	<target name="run" depends ="jar">
+		<java jar ="classes\jar\jibble.jar" fork ="true"/>
+	</target>
 </project>
