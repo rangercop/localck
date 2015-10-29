@@ -35,7 +35,7 @@ public class WebServerConfig {
     }
     
     public static final String VERSION = "<a href=\"http://www.jibble.org\">Jibble Web Server 1.0</a> - An extremely small Java web server";
-    
+  
     public static final File location = new File("webfiles");
     public static final int DEFAULT_PORT = 8088;
     

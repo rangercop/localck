@@ -23,7 +23,12 @@ $Id: WebServerException.java,v 1.2 2004/02/01 13:37:35 pjm2 Exp $
  */
 public class WebServerException extends Exception {
     
-    public WebServerException(String e) {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public WebServerException(String e) {
         super(e);
     }
     

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project default="jar" name="G53SQM" basedir=".">
+<project default="run" name="G53SQM" basedir=".">
 	<target name="clean">
 		<delete dir="classes"></delete>
 	</target>
@@ -13,7 +13,7 @@
 			basedir ="classes">
 			
 			<manifest>
-			<attribute name ="Main-Class" value ="g53sqm.jibble.classesMain"/>
+			<attribute name ="Main-Class" value ="g53sqm.jibble.WebServerMain"/>
 			</manifest>
 				</jar>
 		</target>
