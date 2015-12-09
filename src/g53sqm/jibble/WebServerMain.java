@@ -1,5 +1,7 @@
 package g53sqm.jibble;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 
 
@@ -63,5 +65,30 @@ public class WebServerMain {
             
         }
     }
+    public static void BufferedReader() {
+
+		BufferedReader br = null;
+
+		try {
+
+			String sCurrentLine;
+
+			br = new BufferedReader(new FileReader("C:\\configuration.txt"));
+
+			while ((sCurrentLine = br.readLine()) != null) {
+				System.out.println(sCurrentLine);
+			}
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (br != null)br.close();
+			} catch (IOException ex) {
+				ex.printStackTrace();
+			}
+		}
+
+	}
 
 }
