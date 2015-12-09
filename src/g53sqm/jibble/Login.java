@@ -34,6 +34,16 @@ public class Login {
     public static void log(String ip, String request, int code) {
         System.out.println("[" + new java.util.Date().toString() + "] " + ip + " \"" + request + "\" " + code);
         Logger.info("Log information");
+        Logger.error("An Error Message");
+        Logger.warn("A warning");
+        Logger.debug("A Debug Message");
+        
+        doStuff();
     }
     
+    public static void doStuff() {
+    	System.out.println("This is a doStuff Method");
+    	
+    	Logger.info("Information from doStuff");
+    }
 }
