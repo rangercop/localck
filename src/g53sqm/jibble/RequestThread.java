@@ -54,7 +54,7 @@ public class RequestThread implements Runnable {
             }
             else {
                 // Invalid request type (no "GET")
-                Logger.log(ip, request, 405);
+                Login.log(ip, request, 405);
                 _socket.close();
                 return;
             }
@@ -86,7 +86,7 @@ public class RequestThread implements Runnable {
             if (!file.toString().startsWith(_rootDir.toString())) {
                 // Uh-oh, it looks like some lamer is trying to take a peek
                 // outside of our web root directory.
-                Logger.log(ip, request, 404);
+                Login.log(ip, request, 404);
                 out.write(("HTTP/1.0 403 Forbidden\r\n" +
                            "Content-Type: text/html\r\n" + 
                            "Expires: Thu, 01 Dec 1994 16:00:00 GMT\r\n" +
@@ -109,7 +109,7 @@ public class RequestThread implements Runnable {
                 }
                 if (file.isDirectory()) {
                     // print directory listing
-                    Logger.log(ip, request, 200);
+                    Login.log(ip, request, 200);
                     if (!path.endsWith("/")) {
                         path = path + "/";
                     }
@@ -142,7 +142,7 @@ public class RequestThread implements Runnable {
             
             if (!file.exists()) {
                 // The file was not found.
-                Logger.log(ip, request, 404);
+                Login.log(ip, request, 404);
                 out.write(("HTTP/1.0 404 File Not Found\r\n" + 
                            "Content-Type: text/html\r\n" +
                            "Expires: Thu, 01 Dec 1994 16:00:00 GMT\r\n" +
@@ -162,11 +162,11 @@ public class RequestThread implements Runnable {
                     out.write("HTTP/1.0 200 OK\r\n".getBytes());
                     ServerSideScriptEngine.execute(out, headers, file, path);
                     out.flush();
-                    Logger.log(ip, path, 200);
+                    Login.log(ip, path, 200);
                 }
                 catch (Throwable t) {
                     // Internal server error!
-                    Logger.log(ip, request, 500);
+                    Login.log(ip, request, 500);
                     out.write(("Content-Type: text/html\r\n\r\n" +
                                "<h1>Internal Server Error</h1><code>" + path  + "</code><hr>Your script produced the following error: -<p><pre>" +
                                t.toString() + 
@@ -182,7 +182,7 @@ public class RequestThread implements Runnable {
 
             reader = new BufferedInputStream(new FileInputStream(file));
             
-            Logger.log(ip, request, 200);
+            Login.log(ip, request, 200);
             String contentType = (String)WebServerConfig.MIME_TYPES.get(extension);
             if (contentType == null) {
                 contentType = "application/octet-stream";
@@ -215,7 +215,7 @@ public class RequestThread implements Runnable {
             
         }
         catch (IOException e) {
-            Logger.log(ip, "ERROR " + e.toString() + " " + request, 0);
+            Login.log(ip, "ERROR " + e.toString() + " " + request, 0);
             if (reader != null) {
                 try {
                     reader.close();

@@ -15,6 +15,7 @@ $Id: Logger.java,v 1.2 2004/02/01 13:37:35 pjm2 Exp $
 
 */
 
+import org.slf4j.*;
 
 /**
  * A logging class which prefixes messages to the standard output with
@@ -22,14 +23,17 @@ $Id: Logger.java,v 1.2 2004/02/01 13:37:35 pjm2 Exp $
  * 
  * @author Copyright Paul Mutton, http://www.jibble.org/
  */
-public class Logger {
+public class Login {
     
-    private Logger() {
+	static Logger Logger = LoggerFactory.getLogger(Login.class);
+	
+    private Login() {
         // Prevent this class from being constructed.
     }
     
     public static void log(String ip, String request, int code) {
         System.out.println("[" + new java.util.Date().toString() + "] " + ip + " \"" + request + "\" " + code);
+        Logger.info("Log information");
     }
     
 }
