@@ -1,6 +1,7 @@
 package g53sqm.jibble;
 
 import java.io.IOException;
+import org.slf4j.*;
 
 /* 
 Copyright Paul James Mutton, 2001-2004, http://www.jibble.org/
@@ -26,6 +27,8 @@ $Id: WebServerMain.java,v 1.2 2004/02/01 13:37:35 pjm2 Exp $
  */
 public class WebServerMain {
 
+	static org.slf4j.Logger Logger = LoggerFactory.getLogger(WebServerMain.class);
+	
     public static void main(String[] args) throws IOException {
         
         String rootDir = WebServerConfig.location.getCanonicalPath();
@@ -52,10 +55,12 @@ public class WebServerMain {
             System.out.println("Jibble Web Server (modified by How Chun Kah-010894 for G53SQM");
             System.out.println("Root Directory" + rootDir);
             System.out.println("Port" + port);
+            Logger.info("Log information");
             server.activate();
         }
         catch (WebServerException e) {
             System.out.println(e.toString());
+            
         }
     }
 
